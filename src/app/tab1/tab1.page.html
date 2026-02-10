@@ -1,22 +1,66 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Job offers
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
+
+<ion-menu contentId="main-content">
+<ion-header> 
+  <ion-toolbar> 
+    <ion-title> it jobs</ion-title> 
+  </ion-toolbar> 
+</ion-header> 
+  <ion-content class="ion-padding"> 
+<ion-item>
+IT support technicien
+</ion-item>
+<ion-item>
+system and network technician
+</ion-item>
+<ion-item>
+web developer
+</ion-item>
+
+
+<ion-menu-toggle>
+<ion-button>
+close menu
+</ion-button>
+</ion-menu-toggle>
+  </ion-content> 
+</ion-menu>
+
+<ion-header [translucent]="true"> 
+  <ion-toolbar> 
+    <ion-title> Job offers </ion-title> 
+  </ion-toolbar> 
+</ion-header> 
+  <ion-content [fullscreen]="true"> 
+    <ion-header collapse="condense"> 
+     <ion-toolbar>
       <ion-title size="large">Tab 1</ion-title>
     </ion-toolbar>
   </ion-header>
 
 
+<ion-menu-toggle>
+<ion-button>
+click to see IT jobs
+</ion-button>
+</ion-menu-toggle>
+
 My job search, in a galaxy not so far away…
 Feel the job offers flow through you
+<ion-breadcrumbs>
+<ion-breadcrumb href="#jobsearch">
+my job search
+</ion-breadcrumb>
+<ion-breadcrumb href="#joboffers">
+job offers
+</ion-breadcrumb>
+</ion-breadcrumbs>
+<ion-list>
+@for (item of items; track item; let index = $index) {
 <ion-card>
+<ion-label>
+job offer {{ item }}
+</ion-label>
   <ion-card-header>
     <ion-card-title>Job offer1</ion-card-title>
     <ion-card-subtitle>My company</ion-card-subtitle>
@@ -25,6 +69,22 @@ Feel the job offers flow through you
   <ion-card-content>
 description of job offer
   </ion-card-content>
+<ion-chip>
+
+<ion-label>my company name</ion-label>
+</ion-chip>
+<ion-chip>
+<ion-icon name="pin" color="primary"></ion-icon>
+<ion-label>my city</ion-label>
+</ion-chip>
+<ion-chip>
+<ion-icon name="pin" color="secondary"></ion-icon>
+<ion-label>IT support</ion-label>
+</ion-chip>
+<ion-chip>
+<ion-icon name="pin" color="secondary"></ion-icon>
+<ion-label>HTML</ion-label>
+</ion-chip>
 <ion-button id="open-action-sheet">actions avec cette offre</ion-button>
 <ion-action-sheet trigger="open-action-sheet" header="Actions" [buttons]="actionSheetButtons"></ion-action-sheet>
 <ion-button id="present-alert">click me</ion-button>
@@ -44,6 +104,43 @@ message="my short job description"
 <ion-label>lettres=</ion-label>
 </ion-item>
 </ion-list>
+<ion-icon name="heart" aria-hidden="true" aria-label="Favorite">
+</ion-icon>
+<ion-button expand="block" (click)="setOpen(true)">ecrire une lettre de motivation</ion-button>
+
+  <ion-button expand="block" (click)="setOpen(true)">Open</ion-button>
+  <ion-modal [isOpen]="isModalOpen">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-title>Modal</ion-title>
+          <ion-buttons slot="end">
+            <ion-button (click)="setOpen(false)">Close</ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content class="ion-padding">
+        <p>
+Madame, Monsieur
+Je souhaite candidater pour le poste de support IT Technician dans l'entreprise Mon entreprise.
+J'ai des competences en informatique.
+Veuillez agreer Madame Monsieur, lexpression de mes salutations distinguees
+        </p>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+<ion-button (click)="presentPopover($event)">je peux encore candidater a cette offre</ion-button>
+<ion-popover #popover [isOpen]="isOpen" (didDismiss)="isOpen = false">
+  <ng-template>
+    <ion-content class="ion-padding">il vous reste 3 jours pour candidater à cette offre!</ion-content>
+  </ng-template>
+</ion-popover>
 </ion-card>
+}
+</ion-list>
+<ion-infinite-scroll (ionInfinite)="onIonInfinite($event)">
+<ion-infinite-scroll-content>
+</ion-infinite-scroll-content>
+</ion-infinite-scroll>
 
 </ion-content>
