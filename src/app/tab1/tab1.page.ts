@@ -1,6 +1,7 @@
 import { Component, OnInit,CUSTOM_ELEMENTS_SCHEMA, ViewChild } from '@angular/core';
 import { IonPopover, IonMenu, IonHeader, IonButtons, IonMenuButton, IonContent, IonTitle, IonToolbar, InfiniteScrollCustomEvent, IonModal, IonInfiniteScroll, IonInfiniteScrollContent, IonChip, IonActionSheet, IonButton, IonAlert, IonBadge, IonLabel, IonList, IonItem, IonBreadcrumb, IonBreadcrumbs } from '@ionic/angular/standalone';
 
+
 @Component({
   selector: 'app-tab1',
   templateUrl: 'tab1.page.html',
@@ -9,21 +10,21 @@ schemas:[CUSTOM_ELEMENTS_SCHEMA],
 imports:[
 IonInfiniteScrollContent, IonInfiniteScroll, IonContent, IonPopover, IonButton, IonToolbar, IonButtons, IonTitle, IonHeader,IonModal, IonLabel, IonItem, IonBadge,
 ],
-  //standalone: true,
+  //standalone: false,
 })
 export class Tab1Page implements OnInit {
   items: string[] = [];
-  isModalOpen = false;
+  isModalOpen:any = {};
   @ViewChild('popover') popover!: HTMLIonPopoverElement;
 
-  isOpen = false;
+  isOpen:any = {};
 
-  presentPopover(e: Event) {
+  presentPopover(e: Event, hello: string) {
     this.popover.event = e;
-    this.isOpen = true;
+    this.isOpen[hello] = true;
   }
-  setOpen(isOpen: boolean) {
-    this.isModalOpen = isOpen;
+  setOpen(isOpen: boolean, hello: string) {
+    this.isModalOpen[hello] = isOpen;
   }
   alertButtons = ['Close'];
   public actionSheetButtons = [
@@ -60,6 +61,10 @@ export class Tab1Page implements OnInit {
   ];
   ngOnInit() {
     this.generateItems();
+    for (let i = 0; i < 50; i++){
+      this.isModalOpen[i]=false;
+      this.isOpen[i]=false;
+    }
   }
   private generateItems(){
     const count=this.items.length + 1;

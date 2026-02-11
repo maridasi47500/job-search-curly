@@ -39,11 +39,7 @@ close menu
   </ion-header>
 
 
-<ion-menu-toggle>
-<ion-button>
-click to see IT jobs
-</ion-button>
-</ion-menu-toggle>
+
 
 My job search, in a galaxy not so far away…
 Feel the job offers flow through you
@@ -55,6 +51,12 @@ my job search
 job offers
 </ion-breadcrumb>
 </ion-breadcrumbs>
+<ion-menu-toggle>
+<ion-button>
+click to see IT jobs
+</ion-button>
+</ion-menu-toggle>
+<job-search-editor />
 <ion-list>
 @for (item of items; track item; let index = $index) {
 <ion-card>
@@ -85,10 +87,10 @@ description of job offer
 <ion-icon name="pin" color="secondary"></ion-icon>
 <ion-label>HTML</ion-label>
 </ion-chip>
-<ion-button id="open-action-sheet">actions avec cette offre</ion-button>
-<ion-action-sheet trigger="open-action-sheet" header="Actions" [buttons]="actionSheetButtons"></ion-action-sheet>
-<ion-button id="present-alert">click me</ion-button>
-<ion-alert trigger="present-alert"
+<ion-button id="open-action-sheet{{item}}">actions avec cette offre</ion-button>
+<ion-action-sheet trigger="open-action-sheet{{item}}" header="Actions" [buttons]="actionSheetButtons"></ion-action-sheet>
+<ion-button id="present-alert{{item}}">click me</ion-button>
+<ion-alert trigger="present-alert{{item}}"
 header="my job name"
 subheader="my job field"
 message="my short job description"
@@ -106,16 +108,16 @@ message="my short job description"
 </ion-list>
 <ion-icon name="heart" aria-hidden="true" aria-label="Favorite">
 </ion-icon>
-<ion-button expand="block" (click)="setOpen(true)">ecrire une lettre de motivation</ion-button>
+<ion-button expand="block" (click)="setOpen(true, item)">ecrire une lettre de motivation</ion-button>
 
-  <ion-button expand="block" (click)="setOpen(true)">Open</ion-button>
-  <ion-modal [isOpen]="isModalOpen">
+  <ion-button expand="block" (click)="setOpen(true, item)">Open</ion-button>
+  <ion-modal [isOpen]="isModalOpen[item]">
     <ng-template>
       <ion-header>
         <ion-toolbar>
           <ion-title>Modal</ion-title>
           <ion-buttons slot="end">
-            <ion-button (click)="setOpen(false)">Close</ion-button>
+            <ion-button (click)="setOpen(false, item)">Close</ion-button>
           </ion-buttons>
         </ion-toolbar>
       </ion-header>
@@ -129,8 +131,8 @@ Veuillez agreer Madame Monsieur, lexpression de mes salutations distinguees
       </ion-content>
     </ng-template>
   </ion-modal>
-<ion-button (click)="presentPopover($event)">je peux encore candidater a cette offre</ion-button>
-<ion-popover #popover [isOpen]="isOpen" (didDismiss)="isOpen = false">
+<ion-button (click)="presentPopover($event, item)">je peux encore candidater a cette offre</ion-button>
+<ion-popover #popover [isOpen]="isOpen[item]" (didDismiss)="isOpen[item] = false">
   <ng-template>
     <ion-content class="ion-padding">il vous reste 3 jours pour candidater à cette offre!</ion-content>
   </ng-template>
