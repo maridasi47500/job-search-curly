@@ -1,4 +1,5 @@
 My  job search editor
+<button type="button" (click)="updateProfile()">Update Job offer</button>
 <form [formGroup]="jobSearchForm">
 
   <label for="title">Title: </label>
@@ -6,6 +7,34 @@ My  job search editor
 
   <label for="description">Description: </label>
   <textarea id="description" formControlName="description"></textarea>
+  <label for="datefin">date fin: </label>
+  <textarea id="datefin" formControlName="datefin"></textarea>
+  <label for="company">Company: </label>
+  <textarea id="company" formControlName="company"></textarea>
 
+  <label for="city">City: </label>
+  <textarea id="city" formControlName="city"></textarea>
+  <label for="lat">lat: </label>
+  <textarea id="lat" formControlName="lat"></textarea>
+  <label for="lon">lon: </label>
+  <textarea id="lon" formControlName="lon"></textarea>
+<ion-item>
+<ion-chip *ngFor="let skill of skills">
+<ion-icon name="pin" color="secondary"></ion-icon>
+<ion-label>{{skill}}</ion-label>
+</ion-chip>
+  <label for="skill">skill: </label>
+  <textarea id="skill" formControlName="skill"></textarea>
+<button type="button" (click)="updateSkill()">Add a skill</button>
+
+</ion-item>
+
+<div formGroupName="job">
+    <h2>job</h2>
+    <label for="job_name">Name: </label>
+    <input id="job_name" type="text" formControlName="name" />
+    <label for="job_description">Description: </label>
+    <textarea id="job_description" formControlName="description"></textarea>
+  </div>
 </form>
 

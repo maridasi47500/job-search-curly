@@ -1,5 +1,7 @@
 import { Component, OnInit,CUSTOM_ELEMENTS_SCHEMA, ViewChild } from '@angular/core';
 import { IonPopover, IonMenu, IonHeader, IonButtons, IonMenuButton, IonContent, IonTitle, IonToolbar, InfiniteScrollCustomEvent, IonModal, IonInfiniteScroll, IonInfiniteScrollContent, IonChip, IonActionSheet, IonButton, IonAlert, IonBadge, IonLabel, IonList, IonItem, IonBreadcrumb, IonBreadcrumbs } from '@ionic/angular/standalone';
+import { JobSearchEditorComponent }  from '../job-search-editor/job-search-editor.component';
+
 
 
 @Component({
@@ -8,6 +10,7 @@ import { IonPopover, IonMenu, IonHeader, IonButtons, IonMenuButton, IonContent, 
   styleUrls: ['tab1.page.scss'],
 schemas:[CUSTOM_ELEMENTS_SCHEMA],
 imports:[
+JobSearchEditorComponent,
 IonInfiniteScrollContent, IonInfiniteScroll, IonContent, IonPopover, IonButton, IonToolbar, IonButtons, IonTitle, IonHeader,IonModal, IonLabel, IonItem, IonBadge,
 ],
   //standalone: false,

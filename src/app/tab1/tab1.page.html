@@ -1,4 +1,4 @@
-
+<!--
 
 <ion-menu contentId="main-content">
 <ion-header> 
@@ -24,13 +24,14 @@ close menu
 </ion-button>
 </ion-menu-toggle>
   </ion-content> 
-</ion-menu>
+</ion-menu>-->
 
 <ion-header [translucent]="true"> 
   <ion-toolbar> 
     <ion-title> Job offers </ion-title> 
   </ion-toolbar> 
 </ion-header> 
+
   <ion-content [fullscreen]="true"> 
     <ion-header collapse="condense"> 
      <ion-toolbar>
@@ -51,13 +52,17 @@ my job search
 job offers
 </ion-breadcrumb>
 </ion-breadcrumbs>
-<ion-menu-toggle>
+<ion-item>
+
+</ion-item>
+<ion-item>
 <ion-button>
 click to see IT jobs
 </ion-button>
-</ion-menu-toggle>
-<job-search-editor />
+</ion-item>
+
 <ion-list>
+<app-job-search-editor />
 @for (item of items; track item; let index = $index) {
 <ion-card>
 <ion-label>
