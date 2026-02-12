@@ -22,6 +22,8 @@ export class JobSearchEditorComponent  implements OnInit {
     lat: new FormControl(''),
     lon: new FormControl(''),
     skill: new FormControl(''),
+    cv: new FormControl(''),
+    lettre: new FormControl(''),
     job: new FormGroup({      
       name: new FormControl(''),
       description: new FormControl(''),
@@ -36,6 +38,7 @@ export class JobSearchEditorComponent  implements OnInit {
     this.jobSearchForm.patchValue(myvalue);
   }
   updateProfile() {
+    this.skills=["HTML","IT support"];
     this.jobSearchForm.patchValue({
       title: 'IT support technician (H/F)',
       description: `Vos missions :

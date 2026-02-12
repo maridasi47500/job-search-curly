@@ -28,6 +28,10 @@ My  job search editor
 <button type="button" (click)="updateSkill()">Add a skill</button>
 
 </ion-item>
+  <label for="cv">ajouter mes cvs: </label>
+  <input multiple="true" type="file" id="cv" formControlName="cv" id="cv-upload" />
+  <label for="lettre">ajouter mes lettres: </label>
+  <input type="file" multiple="true" id="lettre" formControlName="lettre" id="lettre-upload" />
 
 <div formGroupName="job">
     <h2>job</h2>
